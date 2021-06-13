@@ -34,7 +34,7 @@ class LSTMmodel:
   def mongodb_append(self, mongopred, filename):
     username = urllib.parse.quote_plus('Madhur_123')
     password = urllib.parse.quote_plus('madhur123') 
-    client =  MongoClient("mongodb+srv://Madhur_123:madhur123@cluster0.vw0td.mongodb.net/stockdata?retryWrites=true&w=majority" % (username, password)) 
+    client =  MongoClient("mongodb://Madhur_123:madhur123@cluster0-shard-00-00.vw0td.mongodb.net:27017,cluster0-shard-00-01.vw0td.mongodb.net:27017,cluster0-shard-00-02.vw0td.mongodb.net:27017/?ssl=true&replicaSet=atlas-fa8mpf-shard-0&authSource=admin&retryWrites=true&w=majority") 
     fileindex = [filename] * len(mongopred)
     mongopreds = mongopred.to_frame()
     mongopreds["Filename"] = fileindex
