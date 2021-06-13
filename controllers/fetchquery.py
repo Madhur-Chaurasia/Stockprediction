@@ -32,7 +32,7 @@ def day_check(month, day):
 
 
 def get_closing_price(querydate, stockname) -> dataobject:
-  myclient = pymongo.MongoClient("mongodb://Madhur_123:madhur123@cluster0-shard-00-00.vw0td.mongodb.net:27017,cluster0-shard-00-01.vw0td.mongodb.net:27017,cluster0-shard-00-02.vw0td.mongodb.net:27017/?ssl=true&replicaSet=atlas-fa8mpf-shard-0&authSource=admin&retryWrites=true&w=majority")
+  myclient = pymongo.MongoClient("mongodb+srv://Madhur_123:madhur123@cluster0.vw0td.mongodb.net/?retryWrites=true&w=majority")
   mydb = myclient["stockdata"]
   mycol = mydb["stockdata1"]
   myquery = {"Date": {"$eq": querydate} , "Filename": stockname +'.csv'}  # for example - 2015-07-20   857.771545  ASIANPAINT.csv
@@ -48,7 +48,7 @@ def get_closing_price(querydate, stockname) -> dataobject:
       return ob
 
 def get_closing_price_forweek(querydate, querydateend, stockname) -> List[dataobject]:
-  myclient = pymongo.MongoClient("mongodb://Madhur_123:madhur123@cluster0-shard-00-00.vw0td.mongodb.net:27017,cluster0-shard-00-01.vw0td.mongodb.net:27017,cluster0-shard-00-02.vw0td.mongodb.net:27017/?ssl=true&replicaSet=atlas-fa8mpf-shard-0&authSource=admin&retryWrites=true&w=majority")
+  myclient = pymongo.MongoClient("mongodb+srv://Madhur_123:madhur123@cluster0.vw0td.mongodb.net/?retryWrites=true&w=majority")
   mydb = myclient["stockdata"]
   mycol = mydb["stockdata1"]
   myquery = {"Date": {'$lte': querydateend, '$gte': querydate} , "Filename": stockname +'.csv'}  # for example - 2015-07-20   857.771545  ASIANPAINT.csv
@@ -79,7 +79,7 @@ def buy_and_sell_helper(prices):
 def best_time_to_buy_and_sell(querydate, querydateend, stockname) -> buysell:
     nums = []
     dicta = {}
-    myclient = pymongo.MongoClient("mongodb://Madhur_123:madhur123@cluster0-shard-00-00.vw0td.mongodb.net:27017,cluster0-shard-00-01.vw0td.mongodb.net:27017,cluster0-shard-00-02.vw0td.mongodb.net:27017/?ssl=true&replicaSet=atlas-fa8mpf-shard-0&authSource=admin&retryWrites=true&w=majority")
+    myclient = pymongo.MongoClient("mongodb+srv://Madhur_123:madhur123@cluster0.vw0td.mongodb.net/?retryWrites=true&w=majority")
     mydb = myclient["stockdata"]
     mycol = mydb["stockdata1"]
     myquery = {"Date": {'$lte': querydateend, '$gte': querydate} , "Filename": stockname +'.csv'}  # for example - 2015-07-20   857.771545  ASIANPAINT.csv
