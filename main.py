@@ -20,11 +20,14 @@ tags=["Get the Closing Price"]
 )
 def get_closing_price_app(Year: int, Month: int, Day: int , stockname: StockName):
   yyyy, mm, dd = Year, Month, Day
-  if month_check(int(mm)) and day_check(int(mm),int(dd)):
+  myclient = pymongo.MongoClient("mongodb+srv://Madhur_123:madhur123@cluster0.vw0td.mongodb.net/?retryWrites=true&w=majority")
+  return myclient.list_database_names()
+  
+  '''if month_check(int(mm)) and day_check(int(mm),int(dd)):
     querydate = datetime.datetime(int(yyyy), int(mm), int(dd), 00, 00, 00)
     return get_closing_price(querydate, stockname)
   else:
-    return 0
+    return 0'''
 
 @app.post("/get_closing_price_app_week",
 summary = "Get the Closing Price for the Week",
